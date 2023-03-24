@@ -1,6 +1,7 @@
 (ns net.lewisship.chess-board
   "Renders a chess board from a chess position map."
-  (:require [nextjournal.clerk :as clerk]))
+  (:require [clojure.string :as string]
+            [nextjournal.clerk :as clerk]))
 
 (defn render-board*
   [board]
@@ -44,6 +45,22 @@
   2 2 :knight
   3 2 :queen)
 
+
+(defn describe-move
+  "Describes a move in terms of which piece takes which other piece, e.g. \"Knight takes king\"."
+  [board move]
+  (let [[from to] move
+        freqs      (frequencies (vals board))
+        piece-name (fn [pos]
+                     (let [kind (get board pos)
+                           [col row] pos]
+                       (if (= 1 (get freqs kind))
+                         (name kind)
+                         (format "%s at %d,%d"
+                           (name kind) col row))))]
+    (format "%s takes %s"
+      (string/capitalize (piece-name from))
+      (piece-name to))))
 
 
 
