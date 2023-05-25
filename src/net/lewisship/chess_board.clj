@@ -16,7 +16,7 @@
                image-path (if (#{:bishop :king :knight :pawn :queen :rook} piece)
                             (format "assets/chess_%s.png" (name piece))
                             "assets/blank.png")]]
-     [:div.w-fit.h-fit {:class color}
+     [:div.w-fit.h-fit.p-1 {:class color}
       (clerk/image image-path)])])
 
 (defn render-board [board]
