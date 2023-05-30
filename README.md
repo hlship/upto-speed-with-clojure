@@ -1,2 +1,3 @@
 # upto-speed-with-clojure
-Example code fro Upto Speed With Clojure Slidedeck
+
+Example code from *Upto Speed With Clojure* Slidedeck

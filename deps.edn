@@ -3,4 +3,4 @@
         io.aviso/logging {:mvn/version "1.0"}
         io.github.hlship/trace {:mvn/version "v1.0"}
         clojure-humanize/clojure-humanize {:mvn/version "0.2.2"}}
- :paths ["src" "notebooks"]}
+ :paths ["src" "notebooks" "resources"]}
