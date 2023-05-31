@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+
+# There are 9 pages of people data.
+
+for i in {1..9} ;
+  do
+    url="https://swapi.dev/api/people/?page=$i" ;
+    echo $url ;
+    curl $url > people-$i.json ;
+done
