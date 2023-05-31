@@ -78,3 +78,16 @@
        (map person->file+names)
        (reduce into [])
        (reduce combine-file+names {})))
+
+(let [person->file+names (fn [person]
+                           (let [name (:name person)]
+                             (map (fn [film]
+                                    {:name name
+                                     :film film})
+                                  (:films person))))
+      combine-file+names (fn [film->names film+name]
+                           (update film->names (:film film+name)
+                                   conj (:name film+name)))]
+  (->> people
+       (mapcat person->file+names)
+       (reduce combine-file+names {})))
