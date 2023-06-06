@@ -264,6 +264,22 @@ customer
 
 (reverse-list [5 4 3 2 1])
 
+;; # Destructuring
+
+(let [[x y z :as input] [1 2]]
+  {:x x :y y :z z
+   :input input})
+
+;; The :keys key can be name-spaced to indicate that the corresponding keys are also name-spaced.
+
+(let [{::keys [x y z]
+       :or {y 0 z 0}
+       :as input} {::x 1 ::y 1}]
+  {:x x :y y :z z :input input})
+
+(let [[x y z :as input] [1 2 3 4 5]]
+  {:x x :y y :z z
+   :input input})
 
 
 

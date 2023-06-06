@@ -2,5 +2,6 @@
         io.aviso/pretty {:mvn/version "1.3"}
         io.aviso/logging {:mvn/version "1.0"}
         io.github.hlship/trace {:mvn/version "v1.0"}
+        nubank/matcher-combinators {:mvn/version "3.7.2"}
         clojure-humanize/clojure-humanize {:mvn/version "0.2.2"}}
  :paths ["src" "notebooks" "resources"]}
