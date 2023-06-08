@@ -1,7 +1,8 @@
-(ns net.lewisship.clerk)
+(ns net.lewisship.clerk
+  (:require [nextjournal.clerk :as clerk]))
 
-(clerk/serve! {:browse? true
-               :port 9999
+(clerk/serve! {:browse?     true
+               :port        9999
                :watch-paths ["src" "notebooks"]})
 
 (comment
