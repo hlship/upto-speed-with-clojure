@@ -21,10 +21,9 @@
   (is (= 42 the-great-answer)
       "DeepThought should respond correctly"))
 
-(deftest expands-is-terms
+(deftest expands-terms
   (let [value (* 3 3)]
     (is (even? value)))
-
   (is (string? (* 5 25))))
 
 (deftest with-context
@@ -49,3 +48,25 @@
     3 2 1
 
     5 4 3))
+
+(deftest thrown-failure
+  (is (thrown? Exception
+               :should-have-thrown-exception)))
+
+(deftest thrown-mismatch
+  (is (thrown? IllegalArgumentException
+               (throw (RuntimeException. "not a match")))))
+
+(deftest thrown-with-message
+  (is (thrown-with-msg? Exception #"darth vader"
+                        (throw (IllegalArgumentException. "annakin skywalker")))))
+
+(deftest check-thrown-exception-info
+  (when-let [e (is (thrown? Exception
+                            (throw (ex-info "api failure" {:host "localhost"}))))]
+    (is (= "api failure"
+           (ex-message e)))
+    (is (= {:host "0.0.0.0"}
+           (ex-data e))))
+
+  )
