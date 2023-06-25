@@ -1,22 +1,26 @@
 
 ;; # Some Examples
 
+^:nextjournal.clerk/toc
 (ns net.lewisship.examples
   (:require [nextjournal.clerk :as clerk]))
 
-;; ## Define person map to work on
+
+;; ## Getting and setting map values
+
+;; Define person map to work on
 
 (def person {:first-name "John"
              :last-name  "Smith"
              :age        32})
 
-;; ## assoc - associate key and value into map
+;; ### assoc - associate key and value into map
 
 (assoc person :title "Dr.")
 
 person
 
-;; ## dissoc - disassociate (remove) keys
+;; ### dissoc - disassociate (remove) keys
 
 (dissoc person :age)
 
@@ -26,7 +30,7 @@ person
 
 (dissoc person :first-name :age)
 
-;; ## Getting values
+;; ### Getting values
 
 (get person :age)
 
@@ -38,13 +42,13 @@ person
 
 (:title person "None")
 
-;; ## keys and vals
+;; ### keys and vals
 
 (keys person)
 
 (vals person)
 
-;; ## update - apply function to value at key
+;; ### update - apply function to value at key
 
 (assoc person :age (inc (:age person)))
 
@@ -54,7 +58,7 @@ person
 
 (update person :age str " years")
 
-;; ## assoc-in
+;; ### assoc-in
 
 (def customer {:id         3717737
                :first-name "John"
@@ -70,7 +74,9 @@ customer
 
 (update-in customer [:address :zip] str "-12345")
 
-;; ## cons and conj - add to lists
+;; ## Working with sequences of values
+
+;; ### cons and conj - add to lists
 
 (def names '("mick" "john" "christine" "lindsey" "stevie"))
 
@@ -83,7 +89,7 @@ customer
 (conj [:kirk :bones] :spock :sulu)
 
 
-;; ## first, rest, next -- navigate sequential structuers
+;; ### first, rest, next -- navigate sequential structuers
 
 (first names)
 
@@ -95,7 +101,7 @@ customer
 
 (next '(:only))
 
-;; ## take, drop
+;; ### take, drop
 
 (take 2 names)
 
@@ -104,6 +110,8 @@ customer
 (drop 2 "stevie")
 
 ;; ## Basic functions
+
+;; Defining a simple function:
 
 (defn avg
   [value1 value2]
@@ -114,6 +122,8 @@ customer
   (avg 10M 20M)
   (avg 4.0 3.5)
   (avg 2 9))
+
+;; ### Functions with different arities
 
 (defn avg
   "Returns the average of its inputs."
@@ -127,7 +137,7 @@ customer
   (avg 88 87 73)
   (float (avg 88 87 73)))
 
-;; ## apply - call a function w/ seq of args
+;; ### apply - call a function w/ seq of args
 
 (apply + [50 5])
 
@@ -143,7 +153,7 @@ customer
   (avg 5 10 15 20 25)
   (float (avg 81 75 73 84)))
 
-;; ## anonymous and inline functions
+;; ### anonymous and inline functions
 
 (def square (fn [x] (* x x)))
 
@@ -157,7 +167,7 @@ customer
 
 (mult 4 7)
 
-;; ## and, or
+;; ### and, or
 
 (clerk/example
   (and 1 2 "keep going" :fred)
@@ -171,7 +181,7 @@ customer
   (or false nil :pick-me!)
   (or (:given-name person) "NFN"))
 
-;; ## cond
+;; ### cond
 
 (defn weather
   [temp]
@@ -192,7 +202,7 @@ customer
   (weather 72)
   (weather 142))
 
-;; ## let - local symbols
+;; ### let - local symbols
 
 (let [width 100
       height 50
@@ -202,7 +212,7 @@ customer
   {:width width :height height :depth depth
    :volume volume})
 
-; ## for - implicit lazy looping
+; ### for - implicit lazy looping
 
 ; match each suit with each rank
 
@@ -226,7 +236,7 @@ customer
   [x y])
 
 
-;; ## looping via recursion
+;; ### looping via recursion
 
 (defn stars
   [n]
@@ -236,7 +246,7 @@ customer
 
 (stars 5)
 
-;; ## loop/recur
+;; ### loop/recur
 
 (defn stars
   [n]
@@ -264,7 +274,7 @@ customer
 
 (reverse-list [5 4 3 2 1])
 
-;; # Destructuring
+;; ## Destructuring
 
 (let [[x y z :as input] [1 2]]
   {:x x :y y :z z
