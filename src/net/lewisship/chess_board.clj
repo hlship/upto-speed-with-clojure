@@ -57,10 +57,10 @@
                        (if (= 1 (get freqs kind))
                          (name kind)
                          (format "%s at %d,%d"
-                           (name kind) col row))))]
+                                 (name kind) col row))))]
     (format "%s takes %s"
-      (string/capitalize (piece-name from))
-      (piece-name to))))
+            (string/capitalize (piece-name from))
+            (string/capitalize (piece-name to)))))
 
 
 
