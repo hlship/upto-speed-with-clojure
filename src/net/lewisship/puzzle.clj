@@ -18,10 +18,7 @@
 
 (defn find-targets-for-pawn [board position]
   (for [move pawn-moves]
-    (mapv + position move))
-  #_(let [[col row] position]
-      [[(inc col) (dec row)]
-       [(dec col) (dec row)]]))
+    (mapv + position move)))
 
 (defn valid-position? [[col row]]
   (and (< 0 col 5)
@@ -42,8 +39,6 @@
     ;; Convert to moves:
     (map vector (repeat position) target-positions')))
 
-;; move [[fc fr] [tc tr]]
-
 (defn find-moves [board]
   (reduce
     (fn [moves source-pos]
@@ -51,10 +46,8 @@
     []
     (keys board)))
 
-
 (defn apply-move
   [board move]
-  (prn :board board :move move)
   (let [[source-pos target-pos] move
         piece (get board source-pos)]
     (-> board
@@ -97,6 +90,4 @@
 
 (find-moves easy-board)
 (present-solution easy-board)
-#_(for [move (find-moves easy-board)]
-    (show-move easy-board move))
 
