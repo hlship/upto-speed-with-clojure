@@ -13,7 +13,7 @@
                             "bg-black"
                             "bg-red-600")
                piece      (get board key)
-               image-path (if (#{:bishop :king :knight :pawn :queen :rook} piece)
+               image-path (if piece
                             (format "assets/chess_%s.png" (name piece))
                             "assets/blank.png")]]
      [:div.w-fit.h-fit.p-1 {:class color}
