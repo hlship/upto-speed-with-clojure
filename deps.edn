@@ -1,8 +1,8 @@
-{:deps {io.github.nextjournal/clerk {:mvn/version "0.15.957"}
-        org.clj-commons/pretty {:mvn/version "2.2"}
+{:deps {io.github.nextjournal/clerk {:mvn/version "0.18.1158"}
+        org.clj-commons/pretty {:mvn/version "3.8.0"}
         io.aviso/logging {:mvn/version "1.0"}
-        io.github.hlship/trace {:mvn/version "v1.0"}
-        nubank/matcher-combinators {:mvn/version "3.8.8"}
-        org.clj-commons/humanize {:mvn/version "1.0"}
+        io.github.hlship/trace {:mvn/version "1.5"}
+        nubank/matcher-combinators {:mvn/version "3.11.0"}
+        org.clj-commons/humanize {:mvn/version "1.2"}
         criterium/criterium {:mvn/version "0.4.6"}}
  :paths ["src" "notebooks" "resources"]}
