@@ -15,3 +15,4 @@ pom.xml.asc
 /.clerk/
 .idea
 *.iml 
+.clj-kondo
