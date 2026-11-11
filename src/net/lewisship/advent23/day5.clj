@@ -1,19 +1,22 @@
 (ns net.lewisship.advent23.day5
   (:require [clojure.java.io :as io]
-            [clojure.string :as string]
-            [net.lewisship.chess-board :as chess-board]))
+            [clojure.string :as string]))
 
 
+(defn new-range
+  ;; Arguments ordered as they appear in the input files
+  [dest-start source-start range-length]
+  {:source-start source-start
+   :source-end   (+ source-start range-length -1)
+   :dest-start   dest-start
+   :range-length range-length})
 
 (defn add-range-to-formula
   [formula line]
   (let [[dest-start source-start range-length] (->> line
                                                     (re-seq #"\d+")
                                                     (map parse-long))]
-    (update formula :ranges conj
-            {:dest-start   dest-start
-             :source-start source-start
-             :range-length range-length})))
+    (update formula :ranges conj (new-range dest-start source-start range-length))))
 
 (defn parse-formulas
   [lines]
